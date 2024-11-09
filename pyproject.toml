@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "vgi-hackathon"
+version = "0.1.0"
+description = ""
+authors = ["Eu Jinn <eujinnleong@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+folium = "^0.18.0"
+pandas = "^2.2.3"
+xmltodict = "^0.14.2"
+lxml = "^5.3.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

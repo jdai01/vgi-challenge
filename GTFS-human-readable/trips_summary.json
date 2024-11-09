@@ -1,0 +1,695 @@
+{
+    "10": {
+        "Knoglersfreude": 61,
+        "Herschelstra\u00dfe": 100,
+        "Z O B": 5,
+        "Schulzentrum SW": 1,
+        "Hauptbahnhof": 1
+    },
+    "11": {
+        "Bahnhof IN Audi": 106,
+        "Urnenfelderstr.": 103,
+        "S\u00fcdfriedhof": 13,
+        "Schulzentrum SW": 1,
+        "Audi Tor 10": 1
+    },
+    "15": {
+        "Z O B": 51,
+        "Wettstetten": 39,
+        "Echenzell": 11,
+        "Schulzentrum SW": 2
+    },
+    "16": {
+        "Geisenfeld": 13,
+        "Manching, Realschule": 1,
+        "Manching": 30,
+        "Z O B": 50,
+        "Geisenfeld - Ainau": 6,
+        "Westenhausen": 1,
+        "Airbus": 5,
+        "Schulzentrum SW": 3,
+        "Unsernherrn": 1
+    },
+    "17": {
+        "Boschstra\u00dfe": 12,
+        "Hauptbahnhof Ost": 14
+    },
+    "18": {
+        "Z O B": 28,
+        "Baar-Ebenh. Langenbruck": 30,
+        "Reichershofen": 2,
+        "Schulzentrum SW": 2
+    },
+    "20": {
+        "Ringsee": 101,
+        "Goethestra\u00dfe": 59,
+        "Ingolstadt Village": 14,
+        "Z O B": 6,
+        "Schulzentrum SW": 1
+    },
+    "201": {
+        "Weinleite West": 21,
+        "Rebdorf Busbahnhof": 1,
+        "Eichst\u00e4tt Am Graben": 1,
+        "Blumenberg \u00fc. Weinleite": 3,
+        "Landersh. Roter B\u00fcgel": 9,
+        "Landersh.Feuerwehr": 12,
+        "Schulztr. Schottenau": 2,
+        "Landershofen": 4,
+        "Stadtbhf. \u00fcber Schottenau": 1
+    },
+    "202": {
+        "Eichst\u00e4tt Seidlkr. S\u00fcd": 1,
+        "Uni-Sportanlage": 2,
+        "Eichst\u00e4tt Volksfestpl.": 1,
+        "Seidlkreuz (B.-v.-Spiegel-Str)": 17,
+        "Eichst\u00e4tt Stadtbahnhof": 1,
+        "Rebdorf Busbahnhof": 2
+    },
+    "203": {
+        "Eichst\u00e4tt Sollnau": 17
+    },
+    "204": {
+        "Buchenh\u00fcll": 4,
+        "Schulztr. Schottenau": 2
+    },
+    "21": {
+        "Audi - Sportpark": 88,
+        "Mailing": 64,
+        "Rathausplatz": 3,
+        "Schulzentrum SW": 1,
+        "Z O B": 1,
+        "Mailing K\u00e4the-Kruse-Str": 2,
+        "Mailing MVA": 23
+    },
+    "22": {
+        "Weiherfeld": 20,
+        "K\u00f6sching \u00fc. Interpark": 7,
+        "Ingolstadt Village": 14
+    },
+    "25": {
+        "Z O B": 18,
+        "Pf\u00f6rring-Forchheim": 7,
+        "Audi": 1,
+        "Thei\u00dfing": 6,
+        "Gro\u00dfmehring": 5,
+        "Pettling": 2,
+        "C.-Scheiner-Gym.": 1
+    },
+    "26": {
+        "Schnellbus PF\u00d6-Ettling": 1,
+        "Pf\u00f6rring": 17,
+        "Vohburg": 3,
+        "Z O B": 19,
+        "C.-Scheiner-Gym.": 1,
+        "Gro\u00dfmehring": 2
+    },
+    "30": {
+        "Oberhaunstadt": 31,
+        "Lenting": 19,
+        "Hepberg": 10,
+        "Z O B": 8,
+        "Niederfeld": 64,
+        "Manching, Realschule": 1,
+        "Weningstra\u00dfe": 1,
+        "Appertshofen": 4,
+        "Schulzentrum SW": 1
+    },
+    "31": {
+        "Hauptbahnhof": 2,
+        "Oberhaunstadt": 2
+    },
+    "310": {
+        "Schulztr. Schottenau": 1,
+        "M\u00fchlheim": 5,
+        "Dollnstein Bf": 1,
+        "Dollnstein": 5,
+        "Eberswang": 2,
+        "Ensfeld": 8
+    },
+    "311": {
+        "EI. R\u00f6merstr./Kelz": 1,
+        "Rebdorf Busbf.": 1,
+        "Uni-Sportanlage": 3
+    },
+    "40": {
+        "Z O B": 4,
+        "K\u00f6sching": 33,
+        "Audi - Sportpark": 31,
+        "C-Scheiner-Gymn.": 1,
+        "Unterhaunstadt": 29
+    },
+    "41": {
+        "R\u00f6merstra\u00dfe": 2,
+        "Schulzentrum SW": 1,
+        "Z O B": 2,
+        "Rathausplatz": 1,
+        "St. Anton": 1,
+        "Wallensteinstr": 4
+    },
+    "410": {
+        "Eberswang": 3,
+        "Sch\u00f6nfeld": 2,
+        "Wegscheid": 5,
+        "Schernfeld": 4,
+        "Langensallach": 2,
+        "Rebdorf Busbahnhof": 1,
+        "Eichst\u00e4tt Rebdorf": 1,
+        "Schulztr. Schottenau": 1
+    },
+    "44": {
+        "Zuchering-Hagau": 56,
+        "Hagau \u00fcber Winden": 12,
+        "Z O B": 6,
+        "GS Haunw\u00f6hr": 3,
+        "GS HW Oberbrunnenreuth": 1,
+        "Zuchering-Winden": 1,
+        "Karlskroner Str.": 1,
+        "Audi-G V Z  Halle O": 36,
+        "Nordfriedhof": 40,
+        "Hauptbahnhof": 1
+    },
+    "45": {
+        "GS HW Hundszell": 3,
+        "GS Haunw\u00f6hr": 2,
+        "Friedrichshofen, Schule": 1
+    },
+    "456": {
+        "Karlshuld": 6
+    },
+    "50": {
+        "R-Wagner-Stra\u00dfe": 3,
+        "Gaimersheim": 30,
+        "Lippertshofen": 30,
+        "Z O B": 74,
+        "Gaimersh`m Gewerbegebiet": 21,
+        "Gaimersheim, Schule": 1,
+        "Westpark": 7,
+        "Schatzgerstra\u00dfe": 1
+    },
+    "52": {
+        "Rathausplatz": 50,
+        "St. Monika": 53,
+        "Z O B": 1,
+        "Schulzentrum SW": 1
+    },
+    "525": {
+        "Beilngries": 5,
+        "Beilngries \u00fc. Landerzhofen": 1,
+        "Beilngries \u00fc. Hirschberg": 1,
+        "Greding": 5,
+        "Greding \u00fc. Landerzhofen": 1,
+        "Greding \u00fc. Hirschberg": 1,
+        "Greding \u00fc. Herrnsberg": 1,
+        "Mettendorf": 1
+    },
+    "53": {
+        "Z O B": 7,
+        "Humboldtstra\u00dfe": 7
+    },
+    "55": {
+        "Z O B": 4,
+        "B\u00f6hmfeld": 7,
+        "Gai-Gymnasium": 1
+    },
+    "58": {
+        "Hauptbahnhof Ost": 32,
+        "Z O B": 5,
+        "Hauptbhf. Ost \u00fc. Uni/Kreuztor": 1,
+        "Pfingst\u00e4ckerweg": 34,
+        "Z O B \u00fc. Uni/Kreuztor": 1
+    },
+    "580": {
+        "Rohrbach Bahnhof": 15,
+        "Geisenfeld": 15
+    },
+    "581": {
+        "PAF Realschule": 3,
+        "Geisenfeld": 2,
+        "M\u00fcnchsm\u00fcnster": 2
+    },
+    "60": {
+        "Gerolfing": 34,
+        "Z O B": 3
+    },
+    "61": {
+        "Z O B": 33,
+        "Irgertsheim": 65,
+        "Gai-Gymnasium": 1
+    },
+    "65": {
+        "Z O B": 5,
+        "Buxheim": 4
+    },
+    "70": {
+        "Mailing": 76,
+        "Regensburger Str.": 43,
+        "Stadtwerke": 2,
+        "Klinikum": 134
+    },
+    "85": {
+        "Z O B": 3,
+        "Hofstetten": 9,
+        "Gai-Gymnasium": 1
+    },
+    "88": {
+        "Eichst\u00e4tt-Rebdorf": 4,
+        "Lippertshofen": 2,
+        "Hofstetten": 3,
+        "B\u00f6hmfeld": 1,
+        "Lippertsh. \u00fcber Leonrodplatz": 1,
+        "Hitzhofen": 1
+    },
+    "9112": {
+        "Irgertsheim": 6,
+        "Bergen": 2,
+        "Joshofen": 1,
+        "ND, Berufl. Schulztr.": 7,
+        "Neuburg Bahnhof": 1
+    },
+    "9114": {
+        "Burgheim Schule": 2,
+        "Neuburg Grundschule": 4,
+        "ND, Berufl. Schulztr.": 1,
+        "Neuburg Hofgarten": 1,
+        "Sinning": 2,
+        "Dezenacker": 2,
+        "Moos": 3,
+        "Kunding": 4,
+        "Oberhausen (b. ND)": 1,
+        "Burgheim": 1
+    },
+    "9150": {
+        "Schrobenhsn Omnibusbf.": 2,
+        "Schrobenhsn Bahnhof": 4,
+        "Aichach Bahnhof": 3,
+        "Oberbernbach": 1,
+        "Gachenbach": 2,
+        "K\u00fchbach": 1
+    },
+    "9151": {
+        "Schrobenhsn Omnibusbf.": 3,
+        "Winkelhausen": 1,
+        "Langenmosen": 3
+    },
+    "9153": {
+        "Schrobenhsn Omnibusbf.": 9,
+        "Hohenwart": 4,
+        "Waidhofen": 2,
+        "P\u00f6rnbach": 2
+    },
+    "9154": {
+        "Schrobenhsn Omnibusbf.": 3,
+        "Deimhausen": 3,
+        "Hohenried": 1
+    },
+    "9157": {
+        "Schrobenhsn Omnibusbf.": 2,
+        "Schrobenhsn Bahnhof": 3,
+        "P\u00f6ttmes": 5
+    },
+    "9158": {
+        "Schrobenhsn Bahnhof": 6,
+        "Schiltberg": 4,
+        "Altom\u00fcnster S": 2
+    },
+    "9159": {
+        "Schrobenhsn Omnibusbf.": 4,
+        "Petershausen S": 23,
+        "Gerolsbach": 1,
+        "Tandern": 3,
+        "Schachach": 1,
+        "Hirschenhausen": 1,
+        "Hagenauer Forst": 19,
+        "Schrobenhsn Bahnhof": 2
+    },
+    "9201": {
+        "Rohrbach": 1,
+        "Pfaffenhofen Bahnhof": 1,
+        "Geisenfeld": 3,
+        "D\u00f6rfl": 1
+    },
+    "9202": {
+        "Pfaffenhofen Feuerwehrh.": 17,
+        "PAF, Gymnasium": 5,
+        "PAF, Hauptplatz": 2,
+        "PAF, Montessorischule": 3,
+        "PAF, Stadtm\u00fchle": 10,
+        "Petershausen S": 32,
+        "Steinkirchen": 1,
+        "Jetzendorf": 8,
+        "Oberpaindorf": 1,
+        "Ilmried": 1,
+        "Langwaid": 1
+    },
+    "9221": {
+        "Riedenburg": 23,
+        "Ingolstadt ZOB": 20,
+        "Oberdolling": 3,
+        "IN, C.-Scheiner-Gym.": 2,
+        "K\u00f6sching Realschule": 1,
+        "Kasing": 9,
+        "Tettenwang": 5,
+        "Lobsing": 1
+    },
+    "9223": {
+        "Kipfenberg": 8,
+        "Biberg": 3,
+        "Beilngries": 2,
+        "Denkendorf Dinopark": 1,
+        "Denkendorf": 1,
+        "Schelldorf": 1,
+        "Ingolstadt Hbf": 1,
+        "Ingolstadt ZOB": 10
+    },
+    "9224": {
+        "Wachenzell": 1,
+        "Titting": 2,
+        "Petersbuch": 1,
+        "Kinding Bf.": 4,
+        "Thalm\u00e4ssing": 1,
+        "Greding": 3,
+        "Raitenbuch": 2,
+        "Schafhausen": 2,
+        "Eichst\u00e4tt Stadtbf.": 7,
+        "Eichst\u00e4tt Schottenau": 3,
+        "Eichst\u00e4tt": 1
+    },
+    "9226": {
+        "Ingolstadt ZOB": 24,
+        "Beilngries": 24,
+        "C.-Scheiner-Gym \u00fc. ZOB": 1,
+        "Ingolstadt Hbf": 2,
+        "K\u00f6sching Am Stegbach": 2,
+        "Appertshofen": 8,
+        "Lenting E.-Rauwolf-Str": 1,
+        "Denkendorf Dinopark": 1,
+        "GAI., Gymnasium": 1,
+        "Hepberg": 1,
+        "Denkendorf": 3,
+        "Lenting Hofmark": 1,
+        "D\u00f6rndorf": 1,
+        "Arnbuch": 2,
+        "IN, C.-Scheiner-Gym.": 1,
+        "Neuzell": 2
+    },
+    "9227": {
+        "Beilngries": 9,
+        "Hiendorf": 3,
+        "Hexenagger": 1,
+        "Sch\u00f6nbrunn": 1,
+        "Vogelthal": 1,
+        "Altmannstein": 1,
+        "Oberndorf": 1
+    },
+    "9231": {
+        "Gammersfeld": 5,
+        "Wellheim": 9,
+        "Dollnstein Bf": 2,
+        "Eichst\u00e4tt Stadtbf.": 4,
+        "Eichst\u00e4tt Schottenau": 3,
+        "Eichst\u00e4tt Universit\u00e4t": 2,
+        "Eichst\u00e4tt Pirkh. Br\u00fccke": 1
+    },
+    "9232": {
+        "Eichst\u00e4tt Rebdorf": 1,
+        "Beilngries": 10,
+        "Kipfenberg": 10,
+        "Gungolding": 3,
+        "Walting": 4,
+        "Denkendorf": 1,
+        "Eichst\u00e4tt": 12,
+        "Rebdorf Busbf.": 1,
+        "Eichst\u00e4tt Stadtbf.": 1,
+        "Pf\u00fcnz": 1
+    },
+    "9233": {
+        "Eichst\u00e4tt Stadtbf.": 12,
+        "Eichst\u00e4tt Residenzpl.": 1,
+        "Rebdorf Busbf.": 2,
+        "Tauberfeld Bhf.": 3,
+        "Ingolstadt ZOB": 7,
+        "Egweil": 1,
+        "Buxheim": 4,
+        "Meilenhofen": 1,
+        "9223 Ingolstadt/9239 Neuburg": 1,
+        "Ingolstadt, Z O B  Bussteig 16": 2
+    },
+    "9234": {
+        "Beilngries": 9,
+        "Enkering": 1,
+        "Kirchanhausen": 1,
+        "Greding": 3,
+        "Niefang": 2,
+        "Litterzhofen": 3,
+        "Kaising": 1,
+        "Eichst\u00e4tt Stadtbf.": 3,
+        "Eichst\u00e4tt Rebdorf": 1,
+        "Kinding": 2,
+        "Schl\u00f6\u00dflm\u00fchle": 2,
+        "Pfahldorf": 1,
+        "Hirnstetten": 1
+    },
+    "9235": {
+        "GAI., Gymnasium": 3,
+        "Eichst\u00e4tt Rebdorf": 3,
+        "Tauberfeld Bhf.": 6,
+        "Wettstetten Schule": 1,
+        "Gaimersheim": 7,
+        "K\u00f6sching Am Stegbach": 2,
+        "K\u00f6sching Realschule": 1,
+        "K\u00f6sching": 3,
+        "Ingolstadt ZOB": 1,
+        "Kasing": 1,
+        "Gro\u00dfmehring": 1
+    },
+    "9236": {
+        "Rebdorf Busbf.": 1,
+        "Lenting E.-Rauwolf-Str": 2,
+        "Lenting": 1,
+        "Menning": 1,
+        "Pf\u00f6rring": 2,
+        "Gro\u00dfmehring": 1,
+        "Hepberg": 1,
+        "Wackerstein": 1,
+        "Schelldorf": 1
+    },
+    "9237": {
+        "Eichst\u00e4tt Rebdorf": 1,
+        "Eichst\u00e4tt Stadtbf.": 1,
+        "Denkendorf": 1,
+        "Sandersdorf": 2,
+        "Zell": 1,
+        "Mindelstetten": 1
+    },
+    "9238": {
+        "Eichst\u00e4tt Stadtbf.": 2,
+        "Gammersfeld": 3,
+        "Wellheim": 4,
+        "H\u00fctting": 3,
+        "Konstein": 1,
+        "Eichst\u00e4tt Pirkh. Br\u00fccke": 2,
+        "Eichst\u00e4tt Schottenau": 1,
+        "Biesenhard": 2
+    },
+    "9239": {
+        "Neuburg/Donau": 12,
+        "Eichst\u00e4tt Stadtbf.": 11,
+        "Eichst\u00e4tt Rebdorf": 2
+    },
+    "9241": {
+        "Fernhag": 1,
+        "Scheyern": 3,
+        "Singenbach": 2,
+        "Alberzell": 1,
+        "Junkenhofen": 3,
+        "Pfaffenhofen Bahnhof": 7,
+        "PAF Realschule": 5
+    },
+    "9242": {
+        "PAF, Gymnasium": 1,
+        "Pfaffenhofen": 1,
+        "Niederscheyern": 2,
+        "Pfaffenhofen Bahnhof": 2,
+        "Tegernbach": 2,
+        "Schrobenhsn Omnibusbf.": 4,
+        "G\u00f6belsbach": 1
+    },
+    "9243": {
+        "PAF, Gymnasium": 2,
+        "Holzh\u00e4useln": 1,
+        "Schweitenkirchen": 1,
+        "Niederthann": 2
+    },
+    "9314": {
+        "Pfaffenhofen Bahnhof": 1,
+        "Wolnzach": 4,
+        "Rohrbach": 2,
+        "Wolnzach \u00fc. Rohrbach": 23,
+        "Wolnzach Hallertau-Gymn.": 2,
+        "Burgstall": 1,
+        "Pfaffenhofen \u00fc. Rohrbach": 2
+    },
+    "N1": {
+        "Nordbahnhof": 10,
+        "Irgertsheim": 11
+    },
+    "N10": {
+        "Ringsee": 10,
+        "Z O B": 9
+    },
+    "N11": {
+        "Niederfeld": 10,
+        "Z O B": 9
+    },
+    "N12": {
+        "Z O B": 16,
+        "Urnenfelderstr.": 13,
+        "Hauptbahnhof": 4
+    },
+    "N14": {
+        "Z O B": 9,
+        "Hagau": 10
+    },
+    "N15": {
+        "Knoglersfreude": 10,
+        "Z O B": 10
+    },
+    "N16": {
+        "Z O B": 8,
+        "Unsernherrn": 2,
+        "Manching": 4,
+        "Geisenfeld": 1
+    },
+    "N18": {
+        "Langenbruck": 2
+    },
+    "N2": {
+        "Z O B": 8,
+        "Lippertshofen": 7,
+        "Gaimersheim Gwb.": 4
+    },
+    "N25": {
+        "Gro\u00dfmehring": 1
+    },
+    "N26": {
+        "Vohburg-Pf\u00f6rring": 1
+    },
+    "N3": {
+        "Z O B": 9,
+        "Herschelstra\u00dfe": 11
+    },
+    "N4": {
+        "Z O B": 9,
+        "Wettstetten": 10
+    },
+    "N5": {
+        "Z O B": 8,
+        "Appertshofen": 3,
+        "Oberhaunstadt": 7,
+        "Lenting": 1,
+        "Hepberg": 1
+    },
+    "N6": {
+        "Unterhaunstadt": 7,
+        "Kasing": 3,
+        "K\u00f6sching": 1,
+        "Ingolstadt, Z O B  Bussteig 08": 2,
+        "Z O B": 7
+    },
+    "N7": {
+        "Z O B": 10,
+        "Goethestra\u00dfe": 10
+    },
+    "N8": {
+        "Mailing": 9,
+        "Z O B": 8,
+        "Gro\u00dfmehring": 1
+    },
+    "N9": {
+        "St. Monika": 10,
+        "Z O B": 9
+    },
+    "R204": {
+        "Rufbus+ Buchenh\u00fcll": 12,
+        "Rufbus+ Stadtbahnhof": 13
+    },
+    "R205": {
+        "Rufbus+ Blumenberg": 12,
+        "Rufbus+ Leonrodplatz": 12
+    },
+    "S1": {
+        "Audi": 2,
+        "Seehof": 2,
+        "Emmi-B\u00f6ck-Schule": 1,
+        "Regensburger Str": 3
+    },
+    "S2": {
+        "ZOB Hundszell": 2,
+        "Audi": 2
+    },
+    "S4": {
+        "Irgertsheim": 2,
+        "Klinikum": 9,
+        "Audi": 2,
+        "Bhf IN Audi (S-Linie)": 5,
+        "Bhf Ingolstadt Audi": 5
+    },
+    "S6": {
+        "Audi": 2,
+        "Karlskron": 3
+    },
+    "S7": {
+        "Audi": 7,
+        "K\u00f6sching": 5,
+        "Kasing": 3
+    },
+    "S8": {
+        "Audi": 7,
+        "Appertshofen": 7
+    },
+    "S9": {
+        "Lippertshofen": 8,
+        "Bhf Ingolstadt Audi": 5,
+        "Audi": 2
+    },
+    "X109": {
+        "AE M\u00fcnchen Flughafen": 20,
+        "AE Ingolstadt": 20
+    },
+    "X12": {
+        "Goethestra\u00dfe": 3,
+        "Gro\u00dfmehring": 5,
+        "Bahnhof IN Audi": 10,
+        "Nordbahnhof": 2
+    },
+    "X44": {
+        "Karlshuld": 13,
+        "Museum im Moos": 2,
+        "Audi - G V Z \u00fcber ZOB": 1,
+        "Ingolstadt ZOB": 8,
+        "Karlskroner Str.": 6
+    },
+    "X441": {
+        "Karlskron": 16,
+        "Pobenhausen": 2,
+        "Brunnen": 1,
+        "Ingolstadt ZOB": 4,
+        "Karlskroner Str.": 14,
+        "Audi - G V Z \u00fcber ZOB": 2
+    },
+    "X80": {
+        "Schnellbus Ingolstadt": 17,
+        "Schnellbus Eichst\u00e4tt": 15,
+        "Schnellbus Jupiterstra\u00dfe": 2
+    },
+    "X90": {
+        "Altmannstein": 5,
+        "Ingolstadt (Bhf. IN Audi)": 5
+    },
+    "Z60": {
+        "Pfaffenhofen Bahnhof": 7,
+        "PAF Realschule": 1,
+        "Hohenwart": 7
+    }
+}

@@ -1,13 +1,18 @@
-# Import modules
+import os
 import json
+import xmltodict
 from datetime import datetime
+from filepaths import *  # Assuming file paths are defined here
 
-class Vehicle():
+class Vehicle:
     """
-    Retrieval of bus information from 'vehicle_activity.json'
+    Class to represent a vehicle and its data.
     """
 
     def __init__(self, info):
+        """
+        Initialize the vehicle with data.
+        """
         # Recorded Info
         self.RecordedAtTime = info["RecordedAtTime"]                    # dtype: str / datetime
         self.ProgressBetweenStops = info["ProgressBetweenStops"]        # dtype: dict
@@ -26,33 +31,43 @@ class Vehicle():
         self.MonitoredCall = busInfo["MonitoredCall"]                   # dtype: dict
         self.OnwardCalls = None                                         # dtype: list / None
 
-        # Retrival of "PreviousCalls" and/or "OnwardCalls", when available
+        # Retrieve additional call information if available
+        self._extract_additional_calls(busInfo)
+
+        # Fix data types (e.g., datetime)
+        self._fix_data_types()
+
+    def _extract_additional_calls(self, bus_info):
+        """
+        Extract extra call data if available (PreviousCalls, OnwardCalls).
+        """
         try:
-            self.PreviousCalls = busInfo["PreviousCalls"]["PreviousCall"]
-        except Exception:
-            pass
+            self.PreviousCalls = bus_info["PreviousCalls"]["PreviousCall"]
+        except KeyError:
+            pass  # No PreviousCalls
 
         try:
-            self.OnwardCalls = busInfo["OnwardCalls"]["OnwardCall"]
-        except Exception:
-            pass
+            self.OnwardCalls = bus_info["OnwardCalls"]["OnwardCall"]
+        except KeyError:
+            pass  # No OnwardCalls
 
-
-
-
-        # Initialised functions
-        self.fixDataType()
-
-
-    def fixDataType(self):
-        self.RecordedAtTime = self.castDateTime(self.RecordedAtTime)
+    def _fix_data_types(self):
+        """
+        Fix data types, such as converting string to datetime.
+        """
+        self.RecordedAtTime = self._cast_to_datetime(self.RecordedAtTime)
 
     @staticmethod
-    def castDateTime(dt_str: str):
+    def _cast_to_datetime(dt_str: str):
+        """
+        Convert string to datetime.
+        """
         return datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S.%f%z")
 
     def to_dict(self):
-        # Convert the instance's attributes into a dictionary
+        """
+        Convert the vehicle data to a dictionary.
+        """
         return {
             "RecordedAtTime": self.RecordedAtTime.isoformat() if isinstance(self.RecordedAtTime, datetime) else self.RecordedAtTime,
             "ProgressBetweenStops": self.ProgressBetweenStops,
@@ -70,22 +85,60 @@ class Vehicle():
         }
 
     def to_json(self, filename):
+        """
+        Save the vehicle data to a JSON file.
+        """
         data = self.to_dict()
-
-        # Write the dictionary to a JSON file
         with open(filename, 'w') as f:
-            json.dump(self.to_dict(), f, indent=4)
+            json.dump(data, f, indent=4)
+
+
+def convert_xml_to_json(xml_file: str, json_output_file: str):
+    """
+    Convert an XML file to JSON format and save it.
+    """
+    with open(xml_file, "r", encoding="ISO-8859-1") as f:
+        xml_data = f.read()
+
+    # Convert XML to dictionary
+    dict_data = xmltodict.parse(xml_data)
+
+    # Save as JSON
+    with open(json_output_file, "w", encoding="utf-8") as file:
+        json.dump(dict_data, file, indent=4, ensure_ascii=False)
+
+    return dict_data
+
+
+def extract_vehicle_info(json_data):
+    """
+    Extract vehicle data from the JSON.
+    """
+    # Extract the vehicle activity data
+    vehicle_activity = json_data["Siri"]["ServiceDelivery"]["VehicleMonitoringDelivery"]["VehicleActivity"]
+
+    # Write the vehicle activity data to a JSON file
+    with open(VEHICLE_ACTIVITY_JSON, 'w', encoding='utf-8') as f:
+        json.dump(vehicle_activity, f, indent=4, ensure_ascii=False)
+
+    return vehicle_activity
+
+
+def main():
+    """
+    Main function to load XML, convert to JSON, and process vehicle data.
+    """
+    # Ensure the XML file exists
+    assert os.path.exists(XML_FILE), f"File '{XML_FILE}' not found."
+
+    # Convert XML to JSON
+    json_data = convert_xml_to_json(XML_FILE, JSON_FROM_XML)
+
+    # Extract vehicle data from JSON
+    vehicle_info_list = extract_vehicle_info(json_data)
 
 
 
 if __name__ == "__main__":
-    vehicle_activity_json = "vehicle_activity.json"
-
-    # Load vehicle_activity_json
-    with open(vehicle_activity_json, 'r') as f:
-        data = json.load(f)
-
-    # Get all vehicle essential data (list of Vehicle class)
-    vehicle_activity_list = []
-    for bus in data:
-        vehicle_activity_list.append(Vehicle(bus))
+    # Run the main function
+    vehicle_activity_list = main()

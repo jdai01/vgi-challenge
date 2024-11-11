@@ -12,6 +12,7 @@ MAIN_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Default
 GTFS = "GTFS-Daten"
 GTFS_M = "GTFS-human-readable"
 DJANGO_HTML = makePath("vgi_site", "folium_app", "templates")
+DJANGO_STATIC = makePath("vgi_site", "folium_app", "static", "script")
 
 
 # Data provided by VGI
@@ -26,12 +27,18 @@ STOPS_TXT = makePath(GTFS, "stops.txt")
 TRANSFERS_TXT = makePath(GTFS, "transfers.txt")
 TRIPS_TXT = makePath(GTFS, "trips.txt")
 
+# Icons
+BUS_PNG = makePath("icons", "bus.png")
+BUSSTOP_PNG = makePath("icons", "bushaltestelle.png")
+
 
 # Created filepaths
 JSON_FROM_XML = XML_FILE[:-4] + ".json"
+VEHICLE_ACTIVITY_JSON = makePath(GTFS_M, "vehicle_activity.json")
 STOPS_JSON = makePath(GTFS_M, "stops.json")
 
-MAP_HTML_DJANGO = makePath(DJANGO_HTML, "map2.html")
+MAP_HTML_DJANGO = makePath(DJANGO_HTML, "map.html")
+MAP_JS_DJANGO = makePath(DJANGO_STATIC, "map.js")
 
 
 
@@ -51,7 +58,7 @@ def main():
     """
     for var_name, var_value in globals().items():
         if isinstance(var_value, str) and var_value:  # Ensure var_value is a non-empty string
-            if var_value.endswith('.txt') or var_value.endswith('.xml'):
+            if var_value.endswith('.txt') or var_value.endswith('.xml') or var_value.endswith('.png'):
                 # Use assert to check if the path is valid
                 assert check_path_validity(var_value), f"Invalid path: {var_name} = {var_value}"
     print("All paths are valid.")

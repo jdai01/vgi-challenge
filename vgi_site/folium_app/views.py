@@ -4,7 +4,6 @@ from django.template import loader, Context
 from django.http import HttpResponse, HttpResponseRedirect
 from copy import copy
 from .forms import FileUploadForm
-from .utils import handle_uploaded_file
 from .models import UploadedFile
 from django.views.decorators.csrf import csrf_exempt
 import os
@@ -46,7 +45,7 @@ def upload_file(request):
             uploaded_file = form.save()
 
             # Optionally save the file locally (if needed)
-            save_file_locally(uploaded_file.file)
+            # save_file_locally(uploaded_file.file)
 
             # Redirect to a success page
             return redirect('success')
@@ -58,31 +57,13 @@ def upload_file(request):
     return render(request, 'upload_file.html', {'form': form})
 
 
-def save_file_locally(file_field):
-    """
-    Save the uploaded file to a local directory.
-    - file_field: FileField or the uploaded file object to be saved locally.
-    """
-    import os
-
-    # Define the local directory path where files will be saved
-    local_directory = 'local_directory/'
-    os.makedirs(local_directory, exist_ok=True)  # Create the directory if it doesn't exist
-
-    # Construct the local file path
-    local_file_path = os.path.join(local_directory, os.path.basename(file_field.name))
-
-    # Save the file content locally
-    with open(local_file_path, 'wb') as local_file:
-        for chunk in file_field.chunks():
-            local_file.write(chunk)
-
-
 
 
 def success(request):
     template = loader.get_template('success.html')
     return HttpResponse(template.render())
 
-
+def default_map(request):
+    template = loader.get_template('map.html')
+    return HttpResponse(template.render())
 

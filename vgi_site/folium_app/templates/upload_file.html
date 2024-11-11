@@ -5,11 +5,19 @@
     <title>Upload File</title>
 </head>
 <body>
-    <h1>Upload a New File</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload File</button>
-    </form>
+    <div>
+        <h1>Upload a New SIRI File (XML)</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+    <div>
+        <p>If map is generated without an XML file uploaded, the VGI competition file will be used.</p>
+        <button> <a href="/map">Continue without file upload</a></button>
+    </div>
+
+    
 </body>
 </html>

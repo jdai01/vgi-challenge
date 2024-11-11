@@ -25,9 +25,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('welcome/', admin.site.urls),
-    path('', views.home_view, name='home'),
-    path('upload-file/', views.upload_file, name='upload_file'),
+    path('', views.upload_file, name='home'),
+    # path('upload-file/', views.upload_file, name='upload_file'),
     path('success/', views.success, name='success'),  # Redirect to success page
+    path('map', views.default_map, name='default_map'),
 
 
 

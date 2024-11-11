@@ -67,3 +67,8 @@ def default_map(request):
     template = loader.get_template('map.html')
     return HttpResponse(template.render())
 
+
+
+def map2(request):
+    template = loader.get_template('map2.html')
+    return HttpResponse(template.render())

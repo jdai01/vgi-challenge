@@ -7,6 +7,7 @@ from .forms import FileUploadForm
 from .models import UploadedFile
 from django.views.decorators.csrf import csrf_exempt
 import os
+from .map_generation import map_generation
 
 
 
@@ -64,11 +65,9 @@ def success(request):
     return HttpResponse(template.render())
 
 def default_map(request):
+    map_generation.create_default_map()
     template = loader.get_template('map.html')
     return HttpResponse(template.render())
 
 
 
-def map2(request):
-    template = loader.get_template('map2.html')
-    return HttpResponse(template.render())

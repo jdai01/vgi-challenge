@@ -5,6 +5,8 @@ import xmltodict
 from folium import Icon, CustomIcon
 from django.conf import settings
 import os
+from datetime import datetime
+import re
 
 
 def create_default_map():
@@ -73,17 +75,45 @@ def create_map(xml_filepath):
                 lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
                 line = vehicle["MonitoredVehicleJourney"]["LineRef"]
                 destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
-                delay = vehicle["MonitoredVehicleJourney"]["Delay"] 
+                delay = convert_delay(vehicle["MonitoredVehicleJourney"]["Delay"]) 
                 occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
                 occupation_percentage =vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]
+                monitored_call = vehicle["MonitoredVehicleJourney"]["MonitoredCall"] 
+                
+                try:
+                    onward_call = vehicle["MonitoredVehicleJourney"]["OnwardCall"]
+                except KeyError:
+                    onward_call = None
                 
                 # Create a custom icon for the vehicles
                 bus_icon = CustomIcon(icon_image=bus_icon_path, icon_size=(40, 40))
                 
+                # Create the popup with html content, and width
+                popup_html = f"""
+                    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 5px;">
+                        <meta charset="UTF-8">
+                        <strong>Bus {line}</strong><br>
+                        <strong>Direction: {destination}</strong><br>
+                        
+                        <hr style="border: 0; border-top: 1px solid #000;"/>
+                        <strong>Next Stops ... <\strong><br>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="text-align: left;"> - {monitored_call["StopPointName"]}</div>
+                            <div style="text-align: right;">
+                                <span>{convert_to_hm(monitored_call["AimedArrivalTime"])} +<\span>
+                                <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
+                            </div>
+                        </div>
+                        <hr style="border: 0; border-top: 1px solid #000;"/>
+                        <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage}% full
+                    </div>
+                """
+                popup = folium.Popup(popup_html, max_width=300)  # Adjust max_width to set the width of the popup
+
                 # Create marker for vehicle
                 marker = folium.Marker(
                     location=[lat,lon],
-                    popup=f"Vehicle on Line {line} to {destination},\nDelay:{delay},\nBus Occupancy: {occupation_absolute} passengers, {occupation_percentage}% full",
+                    popup=popup,
                     tooltip=f"Line {line} to {destination}",
                     name = line,
                     icon=bus_icon
@@ -141,3 +171,14 @@ def create_map(xml_filepath):
     m.save(destination_path)
 
 
+def convert_to_hm(date_str):
+    dt = datetime.fromisoformat(date_str)
+    return dt.strftime("%H:%M")
+
+def convert_delay(delay_str):
+    """Output: seconds (int) or None"""
+    match = re.match(r"(-?P?T?(\d+)S)", delay_str)
+    
+    if match:
+        return int(match.group(2)) if match.group(1)[0] != '-' else -int(match.group(2))
+    return None

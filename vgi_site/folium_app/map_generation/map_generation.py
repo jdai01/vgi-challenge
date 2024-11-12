@@ -73,7 +73,7 @@ def create_map(xml_filepath):
             try:
                 lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
                 lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
-                line = vehicle["MonitoredVehicleJourney"]["LineRef"]
+                line = bus_line(vehicle["MonitoredVehicleJourney"]["LineRef"])
                 destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
                 delay = convert_delay(vehicle["MonitoredVehicleJourney"]["Delay"]) 
                 occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
@@ -81,34 +81,58 @@ def create_map(xml_filepath):
                 monitored_call = vehicle["MonitoredVehicleJourney"]["MonitoredCall"] 
                 
                 try:
-                    onward_call = vehicle["MonitoredVehicleJourney"]["OnwardCall"]
+                    onward_calls = vehicle["MonitoredVehicleJourney"]["OnwardCalls"]["OnwardCall"]
                 except KeyError:
-                    onward_call = None
+                    onward_calls = None
                 
                 # Create a custom icon for the vehicles
                 bus_icon = CustomIcon(icon_image=bus_icon_path, icon_size=(40, 40))
                 
-                # Create the popup with html content, and width
-                popup_html = f"""
-                    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 5px;">
+                # Create html file for popup
+                header = f"""
+                    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 2px;">
                         <meta charset="UTF-8">
-                        <strong>Bus {line}</strong><br>
-                        <strong>Direction: {destination}</strong><br>
-                        
-                        <hr style="border: 0; border-top: 1px solid #000;"/>
-                        <strong>Next Stops ... <\strong><br>
+                        <strong>
+                            Line {line}<br>
+                            Direction: {destination}
+                        </strong><br>
+                """
+                content = f"""
+                    <hr style="border: 0; border-top: 1px solid #000;"/>
+                    <strong>Next Stops ... </strong><br>
+                    <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                        <div style="text-align: left; padding-right: 5px;"> - {monitored_call["StopPointName"]}</div>
+                        <div style="text-align: right;">
+                            <span>{convert_to_hm(monitored_call["AimedArrivalTime"])} +</span>
+                            <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
+                        </div>
+                    </div>
+                """
+                footer = f"""
+                    <hr style="border: 0; border-top: 1px solid #000;"/>
+                    <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage}% full
+                </div>
+                """
+
+                if onward_calls:
+                    for i in range(min(len(onward_calls), 5)):
+                        next_stop = onward_calls[i]
+                        content += f"""
                         <div style="display: flex; justify-content: space-between;">
-                            <div style="text-align: left;"> - {monitored_call["StopPointName"]}</div>
+                            <div style="text-align: left; padding-right: 5px;"> - {next_stop["StopPointName"]}</div>
                             <div style="text-align: right;">
-                                <span>{convert_to_hm(monitored_call["AimedArrivalTime"])} +<\span>
+                                <span>{convert_to_hm(next_stop["AimedArrivalTime"])} +</span>
                                 <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
                             </div>
                         </div>
-                        <hr style="border: 0; border-top: 1px solid #000;"/>
-                        <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage}% full
-                    </div>
-                """
-                popup = folium.Popup(popup_html, max_width=300)  # Adjust max_width to set the width of the popup
+                        """
+                    if len(onward_calls) > 5:
+                        content += f"""
+                        <div style="display: flex; justify-content: space-between;">   ...</div>
+                        """
+
+                popup_html = header + content + footer
+                popup = folium.Popup(popup_html, max_width=400)  # Adjust max_width to set the width of the popup
 
                 # Create marker for vehicle
                 marker = folium.Marker(
@@ -176,9 +200,14 @@ def convert_to_hm(date_str):
     return dt.strftime("%H:%M")
 
 def convert_delay(delay_str):
-    """Output: seconds (int) or None"""
+    """Output: seconds (int) or 0"""
     match = re.match(r"(-?P?T?(\d+)S)", delay_str)
     
     if match:
-        return int(match.group(2)) if match.group(1)[0] != '-' else -int(match.group(2))
+        return int(match.group(2)) if match.group(1)[0] != '-' else 0
     return None
+
+def bus_line(line):
+    if line.startswith("INVG"):
+        return line[4:]  # Removes the first 4 characters ("INVG")
+    return line  # If "INVG" is not present, return the line as is

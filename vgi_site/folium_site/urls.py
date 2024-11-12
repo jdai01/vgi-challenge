@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.upload_file, name='home'),
     # path('upload-file/', views.upload_file, name='upload_file'),
     path('success/', views.success, name='success'),  # Redirect to success page
-    path('map', views.default_map, name='default_map'),
+    path('default_map', views.default_map, name='default_map'),
+    path('map', views.dynamic_map_generation, name='map'),
     # path('map2', views.map2, name='map2'),  # Add this line
 ]

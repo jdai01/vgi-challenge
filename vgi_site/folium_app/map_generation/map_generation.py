@@ -7,9 +7,6 @@ from django.conf import settings
 import os
 
 
-
-
-
 def create_default_map():
     default_xml = os.path.join(settings.BASE_DIR,"folium_app","static", "default.xml")
     # print(default_xml)
@@ -18,7 +15,6 @@ def create_default_map():
 
 def create_map(xml_filepath):
     #this function assumes that stops.txt isnt dynamic and wont be changed
-
     stops_path = os.path.join(settings.BASE_DIR,"folium_app","static", "stops.txt")
     bus_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus.png")
     bus_stop_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bushaltestelle.png")
@@ -29,6 +25,7 @@ def create_map(xml_filepath):
     stops_df = pd.read_csv(stops_path)
     parent_station_list=stops_df['parent_station'].unique()
     filtered_df = stops_df[~stops_df['stop_id'].isin(parent_station_list)][['stop_id','stop_lat','stop_lon', 'stop_name']]
+
     with open(xml_filepath, "r", encoding="ISO-8859-1") as f:
         xml_data = f.read()
     raw_xml = xmltodict.parse(xml_data)
@@ -67,7 +64,35 @@ def create_map(xml_filepath):
             icon=bus_stop_icon
         )
         stops_cluster.add_child(marker)
-    for vehicle in live_vehicle_data:
+
+    #this if statement is to make sure that there are more than 1 busses in the xml
+    if type(live_vehicle_data) == list:
+        for vehicle in live_vehicle_data:
+            try:
+                lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
+                lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
+                line = vehicle["MonitoredVehicleJourney"]["LineRef"]
+                destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
+                delay = vehicle["MonitoredVehicleJourney"]["Delay"] 
+                occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
+                occupation_percentage =vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]
+                
+                # Create a custom icon for the vehicles
+                bus_icon = CustomIcon(icon_image=bus_icon_path, icon_size=(40, 40))
+                
+                # Create marker for vehicle
+                marker = folium.Marker(
+                    location=[lat,lon],
+                    popup=f"Vehicle on Line {line} to {destination},\nDelay:{delay},\nBus Occupancy: {occupation_absolute} passengers, {occupation_percentage}% full",
+                    tooltip=f"Line {line} to {destination}",
+                    name = line,
+                    icon=bus_icon
+                )
+                vehicles_cluster.add_child(marker)
+            except KeyError:
+                # Handle the case where the vehicle data does not have valid location info
+                continue
+    else:
         try:
             lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
             lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
@@ -90,8 +115,8 @@ def create_map(xml_filepath):
             )
             vehicles_cluster.add_child(marker)
         except KeyError:
+            pass
             # Handle the case where the vehicle data does not have valid location info
-            continue
     
 
 

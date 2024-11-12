@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render,redirect, get_object_or_404
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template import loader, Context
@@ -6,11 +7,10 @@ from copy import copy
 from .forms import FileUploadForm
 from .models import UploadedFile
 from django.views.decorators.csrf import csrf_exempt
-import os
 from .map_generation import map_generation
+import os
 
-
-
+upload_path = os.path.join(settings.BASE_DIR,"uploads","received.xml")
 
 @xframe_options_exempt
 def home_view(request):
@@ -18,18 +18,6 @@ def home_view(request):
     template = loader.get_template('main.html')
     return HttpResponse(template.render())
 # Create your views here.
-
-
-
-# def upload_view(request):
-#     if request.method == "POST":
-#         form = UploadFileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             handle_uploaded_file(request.FILES["file"])
-#             return HttpResponseRedirect("/success/url/")
-#     else:
-#         form = UploadFileForm()
-#     return render(request, "upload.html", {"form": form})
 
 @csrf_exempt
 def upload_file(request):
@@ -43,10 +31,10 @@ def upload_file(request):
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # Save the file to the database
-            uploaded_file = form.save()
+            # uploaded_file = form.save()
 
             # Optionally save the file locally (if needed)
-            # save_file_locally(uploaded_file.file)
+            handle_uploaded_file(request.FILES["file"])
 
             # Redirect to a success page
             return redirect('success')
@@ -57,7 +45,10 @@ def upload_file(request):
     # Render the file upload form
     return render(request, 'upload_file.html', {'form': form})
 
-
+def handle_uploaded_file(f):
+    with open(upload_path, "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
 
 
 def success(request):
@@ -69,5 +60,10 @@ def default_map(request):
     template = loader.get_template('map.html')
     return HttpResponse(template.render())
 
+def dynamic_map_generation(request):
+
+    map_generation.create_map(xml_filepath=upload_path)
+    template = loader.get_template('map.html')
+    return HttpResponse(template.render())
 
 

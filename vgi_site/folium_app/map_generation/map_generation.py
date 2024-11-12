@@ -185,7 +185,7 @@ def create_map(xml_filepath):
     Search(
         layer=vehicles_cluster,
         geom_type="Point",
-        placeholder="Search for a Bus Stop",
+        placeholder="Search for a Bus Line",
         collapsed=True,
         search_label="name",
     ).add_to(m)

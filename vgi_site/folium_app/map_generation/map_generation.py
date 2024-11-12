@@ -32,7 +32,7 @@ def create_map(xml_filepath):
 
     with open(xml_filepath, "r", encoding="ISO-8859-1") as f:
         xml_data = f.read()
-    raw_xml = xmltodict.parse(xml_data)
+    raw_xml = xmltodict.parse(xml_data, force_list=("VehicleActivity"))
     live_vehicle_data = raw_xml["Siri"]["ServiceDelivery"]["VehicleMonitoringDelivery"]["VehicleActivity"]
     timestamp = raw_xml["Siri"]["ServiceDelivery"]["ResponseTimestamp"]
 
@@ -65,120 +65,97 @@ def create_map(xml_filepath):
             location=[row['stop_lat'], row['stop_lon']],
             popup=row['stop_name'],
             tooltip=row['stop_name'],
-            icon=bus_stop_icon
+            icon=bus_stop_icon,
+            name = row['stop_name']
         )
         stops_cluster.add_child(marker)
 
     #this if statement is to make sure that there are more than 1 busses in the xml
-    if type(live_vehicle_data) == list:
-        for vehicle in live_vehicle_data:
-            try:
-                lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
-                lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
-                line = bus_line(vehicle["MonitoredVehicleJourney"]["LineRef"])
-                destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
-                delay = convert_delay(vehicle["MonitoredVehicleJourney"]["Delay"]) 
-                occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
-                occupation_percentage = int(vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]) / 100
-                monitored_call = vehicle["MonitoredVehicleJourney"]["MonitoredCall"] 
-                
-                try:
-                    onward_calls = vehicle["MonitoredVehicleJourney"]["OnwardCalls"]["OnwardCall"]
-                except KeyError:
-                    onward_calls = None
-                
-                # Create a custom icon for the vehicles
-                if occupation_percentage > 0.7:
-                    icon_path = bus_icon_path_red
-                elif occupation_percentage > 0.5:
-                    icon_path = bus_icon_path_orange
-                else:
-                    icon_path = bus_icon_path_green
-                bus_icon = CustomIcon(icon_image=icon_path, icon_size=(40, 40))
-                
-                # Create html file for popup
-                header = f"""
-                    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 2px;">
-                        <meta charset="UTF-8">
-                        <strong>
-                            Line {line}<br>
-                            Direction: {destination}
-                        </strong><br>
-                """
-                content = f"""
-                    <hr style="border: 0; border-top: 1px solid #000;"/>
-                    <strong>Next Stops ... </strong><br>
-                    <div style="display: flex; justify-content: space-between; font-weight: bold;">
-                        <div style="text-align: left; padding-right: 5px;"> - {monitored_call["StopPointName"]}</div>
-                        <div style="text-align: right;">
-                            <span>{convert_to_hm(monitored_call["AimedArrivalTime"])} +</span>
-                            <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
-                        </div>
-                    </div>
-                """
-                footer = f"""
-                    <hr style="border: 0; border-top: 1px solid #000;"/>
-                    <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage * 100}% full
-                </div>
-                """
-
-                if onward_calls:
-                    for i in range(min(len(onward_calls), 5)):
-                        next_stop = onward_calls[i]
-                        content += f"""
-                        <div style="display: flex; justify-content: space-between;">
-                            <div style="text-align: left; padding-right: 5px;"> - {next_stop["StopPointName"]}</div>
-                            <div style="text-align: right;">
-                                <span>{convert_to_hm(next_stop["AimedArrivalTime"])} +</span>
-                                <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
-                            </div>
-                        </div>
-                        """
-                    if len(onward_calls) > 5:
-                        content += f"""
-                        <div style="display: flex; justify-content: space-between;">   ...</div>
-                        """
-
-                popup_html = header + content + footer
-                popup = folium.Popup(popup_html, max_width=400)  # Adjust max_width to set the width of the popup
-
-                # Create marker for vehicle
-                marker = folium.Marker(
-                    location=[lat,lon],
-                    popup=popup,
-                    tooltip=f"Line {line} to {destination}",
-                    name = line,
-                    icon=bus_icon
-                )
-                vehicles_cluster.add_child(marker)
-            except KeyError:
-                # Handle the case where the vehicle data does not have valid location info
-                continue
-    else:
+    for vehicle in live_vehicle_data:
         try:
             lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
             lat = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Latitude"]
-            line = vehicle["MonitoredVehicleJourney"]["LineRef"]
+            line = bus_line(vehicle["MonitoredVehicleJourney"]["LineRef"])
             destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
-            delay = vehicle["MonitoredVehicleJourney"]["Delay"] 
+            delay = convert_delay(vehicle["MonitoredVehicleJourney"]["Delay"]) 
             occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
-            occupation_percentage =vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]
+            occupation_percentage = int(vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]) / 100
+            monitored_call = vehicle["MonitoredVehicleJourney"]["MonitoredCall"] 
+            # print(monitored_call["StopPointName"])
+            
+            try:
+                onward_calls = vehicle["MonitoredVehicleJourney"]["OnwardCalls"]["OnwardCall"]
+            except KeyError:
+                onward_calls = None
             
             # Create a custom icon for the vehicles
-            bus_icon = CustomIcon(icon_image=bus_icon_path, icon_size=(40, 40))
+            if occupation_percentage > 0.7:
+                icon_path = bus_icon_path_red
+            elif occupation_percentage > 0.5:
+                icon_path = bus_icon_path_orange
+            else:
+                icon_path = bus_icon_path_green
+            bus_icon = CustomIcon(icon_image=icon_path, icon_size=(40, 40))
             
+            # Create html file for popup
+            header = f"""
+                <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 2px;">
+                    <meta charset="UTF-8">
+                    <strong>
+                        Line {line}<br>
+                        Direction: {destination}
+                    </strong><br>
+            """
+            content = f"""
+                <hr style="border: 0; border-top: 1px solid #000;"/>
+                <strong>Next Stops ... </strong><br>
+                <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                    <div style="text-align: left; padding-right: 5px;"> - {monitored_call["StopPointName"]}</div>
+                    <div style="text-align: right;">
+                        <span>{convert_to_hm(monitored_call["AimedArrivalTime"])} +</span>
+                        <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
+                    </div>
+                </div>
+            """
+            footer = f"""
+                <hr style="border: 0; border-top: 1px solid #000;"/>
+                <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage * 100}% full
+            </div>
+            """
+
+            if onward_calls:
+                for i in range(min(len(onward_calls), 5)):
+                    next_stop = onward_calls[i]
+                    content += f"""
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="text-align: left; padding-right: 5px;"> - {next_stop["StopPointName"]}</div>
+                        <div style="text-align: right;">
+                            <span>{convert_to_hm(next_stop["AimedArrivalTime"])} +</span>
+                            <span style="color: {'red' if round(delay/60) >= 1 else 'green'};">{round(delay/60)}</span>
+                        </div>
+                    </div>
+                    """
+                if len(onward_calls) > 5:
+                    content += f"""
+                    <div style="display: flex; justify-content: space-between;">   ...</div>
+                    """
+
+            popup_html = header + content + footer
+            popup = folium.Popup(popup_html, max_width=400)  # Adjust max_width to set the width of the popup
+
             # Create marker for vehicle
             marker = folium.Marker(
                 location=[lat,lon],
-                popup=f"Vehicle on Line {line} to {destination},\nDelay:{delay},\nBus Occupancy: {occupation_absolute} passengers, {occupation_percentage}% full",
+                popup=popup,
                 tooltip=f"Line {line} to {destination}",
-                name = line,
+                name = f"Line {line} to {destination}",
                 icon=bus_icon
             )
             vehicles_cluster.add_child(marker)
         except KeyError:
-            pass
             # Handle the case where the vehicle data does not have valid location info
+            continue
+
     
 
 

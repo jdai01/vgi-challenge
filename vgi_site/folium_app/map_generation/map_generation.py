@@ -18,7 +18,9 @@ def create_default_map():
 def create_map(xml_filepath):
     #this function assumes that stops.txt isnt dynamic and wont be changed
     stops_path = os.path.join(settings.BASE_DIR,"folium_app","static", "stops.txt")
-    bus_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus.png")
+    bus_icon_path_red = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-red.png")
+    bus_icon_path_orange = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-orange.png")
+    bus_icon_path_green = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-green.png")
     bus_stop_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bushaltestelle.png")
     destination_path = os.path.join(settings.BASE_DIR,"folium_app","templates", "map.html")
     # print(stops_path)
@@ -77,7 +79,7 @@ def create_map(xml_filepath):
                 destination = vehicle["MonitoredVehicleJourney"]["DestinationName"]
                 delay = convert_delay(vehicle["MonitoredVehicleJourney"]["Delay"]) 
                 occupation_absolute = vehicle["Extensions"]["init-o:OccupancyData"]["init-o:PassengersNumber"]
-                occupation_percentage =vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]
+                occupation_percentage = int(vehicle["Extensions"]["init-o:OccupancyData"]["init-o:OccupancyPercentage"]) / 100
                 monitored_call = vehicle["MonitoredVehicleJourney"]["MonitoredCall"] 
                 
                 try:
@@ -86,7 +88,13 @@ def create_map(xml_filepath):
                     onward_calls = None
                 
                 # Create a custom icon for the vehicles
-                bus_icon = CustomIcon(icon_image=bus_icon_path, icon_size=(40, 40))
+                if occupation_percentage > 0.7:
+                    icon_path = bus_icon_path_red
+                elif occupation_percentage > 0.5:
+                    icon_path = bus_icon_path_orange
+                else:
+                    icon_path = bus_icon_path_green
+                bus_icon = CustomIcon(icon_image=icon_path, icon_size=(40, 40))
                 
                 # Create html file for popup
                 header = f"""
@@ -110,7 +118,7 @@ def create_map(xml_filepath):
                 """
                 footer = f"""
                     <hr style="border: 0; border-top: 1px solid #000;"/>
-                    <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage}% full
+                    <strong>Bus Occupancy:</strong> {occupation_absolute} passengers, {occupation_percentage * 100}% full
                 </div>
                 """
 

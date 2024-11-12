@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Siri version="2.0" xmlns="http://www.siri.org.uk/siri" xmlns:ns2="http://www.ifopt.org.uk/acsb" xmlns:ns3="http://www.ifopt.org.uk/ifopt" xmlns:ns4="http://datex2.eu/schema/2_0RC1/2_0">
+  <ServiceDelivery>
+    <ResponseTimestamp>2024-02-14T12:05:17.445+01:00</ResponseTimestamp>
+    <ProducerRef>invg</ProducerRef>
+    <ResponseMessageIdentifier>HAFAS_VM-821</ResponseMessageIdentifier>
+    <RequestMessageRef>invg-1707908717430</RequestMessageRef>
+    <Status>true</Status>
+    <MoreData>false</MoreData>
+    <VehicleMonitoringDelivery version="2.0">
+      <ResponseTimestamp>2024-02-14T12:05:17.445+01:00</ResponseTimestamp>
+      <SubscriberRef>HAFAS_VM</SubscriberRef>
+      <SubscriptionRef>VM1</SubscriptionRef>
+      <Status>true</Status>
+      <VehicleActivity>
+        <RecordedAtTime>2024-02-14T12:05:07.820+01:00</RecordedAtTime>
+        <ItemIdentifier>INVGIN-VG 2104_VM1_INVG[@94.0.34270166@][1][1402383815753]/11-111</ItemIdentifier>
+        <ValidUntilTime>2024-02-14T12:15:07.820+01:00</ValidUntilTime>
+        <VehicleMonitoringRef>510029</VehicleMonitoringRef>
+        <ProgressBetweenStops>
+          <LinkDistance>541</LinkDistance>
+          <Percentage>0.00</Percentage>
+        </ProgressBetweenStops>
+        <MonitoredVehicleJourney>
+          <LineRef>INVG45</LineRef>
+          <DirectionRef>H</DirectionRef>
+          <FramedVehicleJourneyRef>
+            <DataFrameRef>2024-02-14</DataFrameRef>
+            <DatedVehicleJourneyRef>INVG[@94.0.34270166@][1][1402383815753]/11-111</DatedVehicleJourneyRef>
+          </FramedVehicleJourneyRef>
+          <JourneyPatternRef>INVG[@94.0.34270166@]101</JourneyPatternRef>
+          <PublishedLineName>INVG45</PublishedLineName>
+          <OperatorRef>SBI</OperatorRef>
+          <VehicleFeatureRef>LowFloor</VehicleFeatureRef>
+          <VehicleFeatureRef>WheelchairAccess</VehicleFeatureRef>
+          <OriginRef>INVGIN-ZOB 11</OriginRef>
+          <OriginName>Z O B</OriginName>
+          <DestinationRef>INVGIN-Kirch 4</DestinationRef>
+          <DestinationName>Kirchstraße</DestinationName>
+          <HeadwayService>false</HeadwayService>
+          <OriginAimedDepartureTime>2024-02-14T11:45:00+01:00</OriginAimedDepartureTime>
+          <DestinationAimedArrivalTime>2024-02-14T12:10:00+01:00</DestinationAimedArrivalTime>
+          <Monitored>true</Monitored>
+          <InCongestion>false</InCongestion>
+          <InPanic>false</InPanic>
+          <VehicleLocation srsName="real">
+            <Longitude>11.403408</Longitude>
+            <Latitude>48.738558</Latitude>
+          </VehicleLocation>
+          <Delay>PT11S</Delay>
+          <BlockRef>10094</BlockRef>
+          <VehicleRef>INVGIN-VG 2104</VehicleRef>
+          <PreviousCalls>
+            <PreviousCall>
+              <StopPointRef>INVGIN-ZOB 11</StopPointRef>
+              <VisitNumber>1</VisitNumber>
+              <StopPointName>Z O B</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:45:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:45:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-AufdS 1</StopPointRef>
+              <VisitNumber>2</VisitNumber>
+              <StopPointName>Auf der Schanz</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:47:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:47:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Kreuz 1</StopPointRef>
+              <VisitNumber>3</VisitNumber>
+              <StopPointName>Universität (Kreuztor)</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:48:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:48:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Tasch 1</StopPointRef>
+              <VisitNumber>4</VisitNumber>
+              <StopPointName>Taschenturm</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:50:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:50:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-ChrSG 1</StopPointRef>
+              <VisitNumber>5</VisitNumber>
+              <StopPointName>Christoph-Scheiner-Gymnasium</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:51:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:51:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Ratha 1</StopPointRef>
+              <VisitNumber>6</VisitNumber>
+              <StopPointName>Rathausplatz</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:53:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:53:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-BrüKo 1</StopPointRef>
+              <VisitNumber>7</VisitNumber>
+              <StopPointName>Brückenkopf</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:55:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:55:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-HauwS 1</StopPointRef>
+              <VisitNumber>8</VisitNumber>
+              <StopPointName>Haunwährer Straße</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:57:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:57:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Eigen 1</StopPointRef>
+              <VisitNumber>9</VisitNumber>
+              <StopPointName>Eigenheimstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:58:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:58:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Mendl 1</StopPointRef>
+              <VisitNumber>10</VisitNumber>
+              <StopPointName>Mendlstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:58:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:58:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Auens 1</StopPointRef>
+              <VisitNumber>11</VisitNumber>
+              <StopPointName>Auenstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T11:59:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T11:59:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Spith 1</StopPointRef>
+              <VisitNumber>12</VisitNumber>
+              <StopPointName>Spitalhofstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:00:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:00:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Zeppe 1</StopPointRef>
+              <VisitNumber>13</VisitNumber>
+              <StopPointName>Zeppelinstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:01:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:01:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Oberr 1</StopPointRef>
+              <VisitNumber>14</VisitNumber>
+              <StopPointName>Oberringstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:02:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:02:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Schro 3</StopPointRef>
+              <VisitNumber>15</VisitNumber>
+              <StopPointName>Schrobenhausener Straße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:03:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:03:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+            <PreviousCall>
+              <StopPointRef>INVGIN-Berli 1</StopPointRef>
+              <VisitNumber>16</VisitNumber>
+              <StopPointName>Berliner Straße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:04:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:04:00+01:00</AimedDepartureTime>
+            </PreviousCall>
+          </PreviousCalls>
+          <MonitoredCall>
+            <StopPointRef>INVGIN-Witte 1</StopPointRef>
+            <VisitNumber>17</VisitNumber>
+            <StopPointName>Wittelsbacher Straße</StopPointName>
+            <VehicleAtStop>true</VehicleAtStop>
+            <DestinationDisplay>Hundszell</DestinationDisplay>
+            <AimedArrivalTime>2024-02-14T12:05:00+01:00</AimedArrivalTime>
+            <AimedDepartureTime>2024-02-14T12:05:00+01:00</AimedDepartureTime>
+          </MonitoredCall>
+          <OnwardCalls>
+            <OnwardCall>
+              <StopPointRef>INVGIN-Hkens 1</StopPointRef>
+              <VisitNumber>18</VisitNumber>
+              <StopPointName>Hackenschwaige</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:06:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:06:00+01:00</AimedDepartureTime>
+            </OnwardCall>
+            <OnwardCall>
+              <StopPointRef>INVGIN-Isido 1</StopPointRef>
+              <VisitNumber>19</VisitNumber>
+              <StopPointName>Isidor-Stürber-Straße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:07:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:07:00+01:00</AimedDepartureTime>
+            </OnwardCall>
+            <OnwardCall>
+              <StopPointRef>INVGIN-Leche 1</StopPointRef>
+              <VisitNumber>20</VisitNumber>
+              <StopPointName>Lechermannstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:08:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:08:00+01:00</AimedDepartureTime>
+            </OnwardCall>
+            <OnwardCall>
+              <StopPointRef>INVGIN-Kirch 4</StopPointRef>
+              <VisitNumber>21</VisitNumber>
+              <StopPointName>Kirchstraße</StopPointName>
+              <AimedArrivalTime>2024-02-14T12:10:00+01:00</AimedArrivalTime>
+              <AimedDepartureTime>2024-02-14T12:10:00+01:00</AimedDepartureTime>
+            </OnwardCall>
+          </OnwardCalls>
+        </MonitoredVehicleJourney>
+        <Extensions>
+          <init-o:OccupancyData xmlns:init-o="http://www.init-ka.de/occupancy">
+            <init-o:OccupancyPercentage>0</init-o:OccupancyPercentage>
+            <init-o:PassengersNumber>0</init-o:PassengersNumber>
+            <init-o:VehicleCapacity>149</init-o:VehicleCapacity>
+            <init-o:VehicleSeatsNumber>49</init-o:VehicleSeatsNumber>
+          </init-o:OccupancyData>
+        </Extensions>
+      </VehicleActivity>
+      <VehicleActivityCancellation>
+        <RecordedAtTime>2024-02-14T12:03:41.257+01:00</RecordedAtTime>
+        <ItemRef>INVGEI-HR 1234_VM1_INVG[@454.0.51211343@][1][1650997223533]/17-125</ItemRef>
+        <VehicleMonitoringRef>510029</VehicleMonitoringRef>
+        <VehicleJourneyRef>
+          <DataFrameRef>2024-02-14</DataFrameRef>
+          <DatedVehicleJourneyRef>INVG[@454.0.51211343@][1][1650997223533]/17-125</DatedVehicleJourneyRef>
+        </VehicleJourneyRef>
+        <LineRef>INVG21</LineRef>
+        <DirectionRef>H</DirectionRef>
+        <JourneyPatternRef>INVG[@454.0.51211343@]101</JourneyPatternRef>
+        <PublishedLineName>INVG21</PublishedLineName>
+      </VehicleActivityCancellation>
+      <VehicleActivityCancellation>
+        <RecordedAtTime>2024-02-14T12:03:31.262+01:00</RecordedAtTime>
+        <ItemRef>INVGIN-VG 1910_VM1_INVG[@6.0.26951948@][1][1322814879125]/0-122</ItemRef>
+        <VehicleMonitoringRef>510029</VehicleMonitoringRef>
+        <VehicleJourneyRef>
+          <DataFrameRef>2024-02-14</DataFrameRef>
+          <DatedVehicleJourneyRef>INVG[@6.0.26951948@][1][1322814879125]/0-122</DatedVehicleJourneyRef>
+        </VehicleJourneyRef>
+        <LineRef>INVG60</LineRef>
+        <DirectionRef>H</DirectionRef>
+        <JourneyPatternRef>INVG[@454.0.51212829@]60:103</JourneyPatternRef>
+        <PublishedLineName>INVG60</PublishedLineName>
+      </VehicleActivityCancellation>
+      <VehicleActivityCancellation>
+        <RecordedAtTime>2024-02-14T12:04:31.238+01:00</RecordedAtTime>
+        <ItemRef>INVGIN-VG 1403_VM1_INVG50-124</ItemRef>
+        <VehicleMonitoringRef>510029</VehicleMonitoringRef>
+        <VehicleJourneyRef>
+          <DataFrameRef>2024-02-14</DataFrameRef>
+          <DatedVehicleJourneyRef>INVG50-124</DatedVehicleJourneyRef>
+        </VehicleJourneyRef>
+        <LineRef>INVG20</LineRef>
+        <DirectionRef>H</DirectionRef>
+        <JourneyPatternRef>INVG[@454.0.8824338@]101</JourneyPatternRef>
+        <PublishedLineName>INVG20</PublishedLineName>
+      </VehicleActivityCancellation>
+      <VehicleActivityCancellation>
+        <RecordedAtTime>2024-02-14T12:02:41.247+01:00</RecordedAtTime>
+        <ItemRef>INVGIIN-VG 1602_VM1_INVG[@599.0.8025966@][2][1676449670416]/3-2428</ItemRef>
+        <VehicleMonitoringRef>510029</VehicleMonitoringRef>
+        <VehicleJourneyRef>
+          <DataFrameRef>2024-02-14</DataFrameRef>
+          <DatedVehicleJourneyRef>INVG[@599.0.8025966@][2][1676449670416]/3-2428</DatedVehicleJourneyRef>
+        </VehicleJourneyRef>
+        <LineRef>INVG9224</LineRef>
+        <DirectionRef>R</DirectionRef>
+        <JourneyPatternRef>INVG[@599.0.8025966@]508</JourneyPatternRef>
+        <PublishedLineName>INVG9224</PublishedLineName>
+      </VehicleActivityCancellation>
+    </VehicleMonitoringDelivery>
+  </ServiceDelivery>
+</Siri>

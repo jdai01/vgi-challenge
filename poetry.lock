@@ -1421,6 +1421,20 @@ files = [
 ]
 
 [[package]]
+name = "xmltojson"
+version = "2.0.3"
+description = "A Python module and cli tool to quickly convert xml text or files into json"
+optional = false
+python-versions = "<4.0,>=3.7"
+files = [
+    {file = "xmltojson-2.0.3-py3-none-any.whl", hash = "sha256:1b68519bd14fbf3e28baa630b8c9116b5d3aa8976648f277a78ae3448498889a"},
+    {file = "xmltojson-2.0.3.tar.gz", hash = "sha256:68a0022272adf70b8f2639186172c808e9502cd03c0b851a65e0760561c7801d"},
+]
+
+[package.dependencies]
+xmltodict = "0.14.2"
+
+[[package]]
 name = "xyzservices"
 version = "2024.9.0"
 description = "Source of XYZ tiles providers"
@@ -1434,4 +1448,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "a9eebc077eb05a508ef77a824eb8d0cde7436ea4e1a133d83fa74362a2ee7ca0"
+content-hash = "0b86fa06df92778ea73e09dde47fe0780d45e20832fdad0a1dccad40147d4ffa"

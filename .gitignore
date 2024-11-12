@@ -1,3 +1,16 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.ipynb
+
+# Ignore virtual environment directories
+venv/
+.env/
+
+# Ignore system files
 .DS_Store
-.vscode
+Thumbs.db
+
 map.html
+received.xml

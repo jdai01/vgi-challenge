@@ -11,18 +11,18 @@ import re
 
 def create_default_map():
     default_xml = os.path.join(settings.BASE_DIR,"folium_app","static", "default.xml")
+    destination = os.path.join(settings.BASE_DIR,"folium_app","templates", "default_map.html")
     # print(default_xml)
-    create_map(xml_filepath=default_xml)
+    create_map(xml_filepath=default_xml,output_file=destination)
 
 
-def create_map(xml_filepath):
+def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_app","templates", "map.html")):
     #this function assumes that stops.txt isnt dynamic and wont be changed
     stops_path = os.path.join(settings.BASE_DIR,"folium_app","static", "stops.txt")
     bus_icon_path_red = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-red.png")
     bus_icon_path_orange = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-orange.png")
     bus_icon_path_green = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-green.png")
     bus_stop_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bushaltestelle.png")
-    destination_path = os.path.join(settings.BASE_DIR,"folium_app","templates", "map.html")
     # print(stops_path)
 
     #loading of datasets and xml file
@@ -177,7 +177,7 @@ def create_map(xml_filepath):
 
 
 
-    m.save(destination_path)
+    m.save(output_file)
 
 
 def convert_to_hm(date_str):

@@ -56,8 +56,13 @@ def success(request):
     return HttpResponse(template.render())
 
 def default_map(request):
-    map_generation.create_default_map()
-    template = loader.get_template('map.html')
+    default_map_check = os.path.exists(os.path.join(settings.BASE_DIR,"folium_app","templates", "default_map.html"))
+    if default_map_check:
+        template = loader.get_template('default_map.html')
+        print("template loaded!")
+    else:
+        map_generation.create_default_map()
+        template = loader.get_template('default_map.html')
     return HttpResponse(template.render())
 
 def dynamic_map_generation(request):

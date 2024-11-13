@@ -164,7 +164,7 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
         geom_type="Point",
         placeholder="Search for a Bus Stop",
         collapsed=True,
-        search_label="tooltip",
+        search_label="name",
     ).add_to(m)
 
     Search(

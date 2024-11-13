@@ -13,4 +13,5 @@ venv/
 Thumbs.db
 
 map.html
+default_map.html
 received.xml

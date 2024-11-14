@@ -1,17 +1,24 @@
-<!-- cody.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Success</title>
     {% load static %}
-    <link rel="stylesheet" href="{%static 'css/home.css'%}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="w-full h-36 flex flex-row justify-start justm-4 p-4">
-        <p>Success</p>
-        <div class="w-3/4 h-full bg-sky-400 p-2">
-            <button><a href="/map">Generate Map</a></button>
+    <div class="container upload_font">
+        <img src="{% static 'sprites/logo.png' %}" alt="VGI Logo">
+        <h1>Upload Success</h1>
+
+        <div class="button-center">
+            <a href="/map"><button>Generate Map</button></a>
         </div>
     </div>
+
+    <footer>
+        Produced for VGI Challenge 2024 &copy; 2024
+    </footer>
 </body>
+</html>

@@ -12,12 +12,12 @@ import os
 
 upload_path = os.path.join(settings.BASE_DIR,"uploads","received.xml")
 
-@xframe_options_exempt
-def home_view(request):
-    # You can pass a dynamic message here, for example, based on some logic or request parameters.
-    template = loader.get_template('main.html')
-    return HttpResponse(template.render())
-# Create your views here.
+# @xframe_options_exempt
+# def home_view(request):
+#     # You can pass a dynamic message here, for example, based on some logic or request parameters.
+#     template = loader.get_template('main.html')
+#     return HttpResponse(template.render())
+# # Create your views here.
 
 @csrf_exempt
 def upload_file(request):

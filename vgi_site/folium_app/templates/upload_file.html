@@ -3,21 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <title>Upload File</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/upload_file.css' %}"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .logo-container {
+            background-image: url("{% static 'sprites/logo.png' %}");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        /* Font Sizes */
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        label, 
+        input[type="file"],
+        button {
+            font-size: 1rem;
+        }
+
+        /* Spacing and Border Radius */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 25px;
+            background-color: #fff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .form-section,
+        .default-map-section {
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .form-section {
+            background-color: #e9f7ef;
+            border: 1px solid #b2d8c8;
+        }
+
+        .default-map-section {
+            background-color: #f2f2f2;
+            border: 1px solid #dcdcdc;
+        }
+
+        /* Label Styling */
+        .form-section label,
+        .default-map-section p {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Input Field Styling */
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        /* Submit Button */
+        .form-section button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .form-section button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Continue Without File Button */
+        .default-map-section button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .default-map-section button:hover {
+            background-color: #218838;
+        }
+
+        /* Link Styling */
+        .default-map-section button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .form-section, .default-map-section {
+                padding: 20px;
+            }
+        }
+
+        .upload_font{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="container upload_font ">
         <h1>Upload a New SIRI File (XML)</h1>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Continue</button>
-        </form>
-    </div>
-    <div>
-        <p>If map is generated without an XML file uploaded, the VGI competition file will be used.</p>
-        <button> <a href="/default_map">Continue without file upload</a></button>
-    </div>
 
-    
+        <!-- Upload File Section -->
+        <div class="form-section">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload and Continue</button>
+            </form>
+        </div>
+
+        <!-- Default Map Section -->
+        <div class="default-map-section">
+            <p class = "upload_font">Default File</p>
+            <button>
+                <a href="/default_map">Continue</a>
+            </button>
+        </div>
+    </div>
 </body>
 </html>

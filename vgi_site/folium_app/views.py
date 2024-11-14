@@ -46,6 +46,15 @@ def upload_file(request):
     return render(request, 'upload_file.html', {'form': form})
 
 def handle_uploaded_file(f):
+
+    # Ensure uploads directory exist
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    upload_dir = os.path.join(base_dir, 'uploads')
+    upload_dir = os.path.dirname(upload_path)
+    if not os.path.exists(upload_dir):
+        os.makedirs(upload_dir)
+
+    # Save the uploaded file
     with open(upload_path, "wb+") as destination:
         for chunk in f.chunks():
             destination.write(chunk)

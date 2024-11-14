@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Upload File</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container upload_font ">
-        <img src="{% static 'sprites/logo.png' %}" alt="VGI Logo">
-        <h1>View Live Map</h1>
+{% extends 'template.html' %}
 
-        <!-- Upload File Section -->
-        <div class="form-section">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Upload and Continue</button>
-            </form>
-        </div>
+{% block title %}Upload File{% endblock %}
 
-        <!-- Default Map Section -->
-        <div class="default-map-section">
-            <p class = "upload_font">Default File:</p>
-            <button>
-                <a href="/default_map">Continue</a>
-            </button>
-        </div>
+{% block header %}View Live Map{% endblock %}
+
+{% block content %}
+    <!-- Upload File Section -->
+    <div class="form-section">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload and Continue</button>
+        </form>
     </div>
-    <footer>
-        Produced for VGI Challenge 2024 &copy; 2024
-    </footer>
-</body>
-</html>
+
+    <!-- Default Map Section -->
+    <div class="default-map-section">
+        <p class="upload_font">Default File:</p>
+        <button>
+            <a href="/default_map">Continue</a>
+        </button>
+    </div>
+{% endblock %}

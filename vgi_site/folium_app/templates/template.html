@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}VGI Challenge{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container upload_font">
+        <img src="{% static 'sprites/logo.png' %}" alt="VGI Logo">
+        <h1>{% block header %}Default Header{% endblock %}</h1>
+
+        {% block content %}
+        <!-- Default content will be inserted here -->
+        {% endblock %}
+
+    </div>
+
+    <footer>
+        Produced for VGI Challenge 2024 &copy; 2024
+    </footer>
+</body>
+</html>

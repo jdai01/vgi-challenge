@@ -8,7 +8,7 @@ class FileUploadForm(forms.ModelForm):
 
     file = forms.FileField(
         widget=forms.ClearableFileInput(attrs={"accept": ".xml"}),
-        label="Upload a new SIRI File",
+        label="Upload SIRI File",
         # help_text="Please upload an XML file.",  # Custom help text
     )
 

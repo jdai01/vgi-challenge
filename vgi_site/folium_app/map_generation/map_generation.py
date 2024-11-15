@@ -56,13 +56,13 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
     m.add_child(fg2)
     folium.LayerControl(collapsed=False, control=True).add_to(m)
 
-    stops_cluster = MarkerCluster(
+    stops_cluster = folium.FeatureGroup(
             name='Bus Stops',
             overlay=True,
             control=False,
             icon_create_function=None,
         ).add_to(fg)
-    vehicles_cluster = MarkerCluster(
+    vehicles_cluster = folium.FeatureGroup(
             name='Vehicles',
             overlay=True,
             control=True,

@@ -7,6 +7,9 @@ from django.conf import settings
 import os
 from datetime import datetime
 import re
+import random
+import string
+from django.templatetags.static import static
 
 
 def create_default_map():
@@ -23,7 +26,13 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
     bus_icon_path_orange = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-orange.png")
     bus_icon_path_green = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bus-green.png")
     bus_stop_icon_path = os.path.join(settings.BASE_DIR,"folium_app","static", "sprites", "bushaltestelle.png")
-    # print(stops_path)
+    
+    occupancy_images = {
+        0: static("sprites/occupancy-null.png"),
+        1: static("sprites/occupancy-low.png"),
+        2: static("sprites/occupancy-medium.png"),
+        3: static("sprites/occupancy-high.png"),
+    }
 
     #loading of datasets and xml file
     stops_df = pd.read_csv(stops_path)
@@ -59,18 +68,79 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
             control=True,
         ).add_to(fg2)
 
+    # For Bus Stops
     for _, row in filtered_df.iterrows():
         bus_stop_icon = CustomIcon(icon_image=bus_stop_icon_path, icon_size=(30, 30))
+        bus_stop_name = row['stop_name']
+
+        # Create random bus and sort according to their arrival time
+        bus_list = [RandomBus() for _ in range(5)]
+        bus_list = sorted(bus_list, key=lambda bus: bus.arrival)
+
+
+        # Create html file for popup
+        header = f"""
+            <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left; padding: 2px; background-color: white; border-radius: 2px;">
+                <meta charset="UTF-8">
+                <strong>
+                    {bus_stop_name}
+                </strong><br>
+        """
+        content = f"""
+            <em>Example:</em>
+            <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; padding: 4px; border-bottom: 1px solid #000;">Line</th>
+                        <th style="text-align: left; padding: 4px; border-bottom: 1px solid #000;">Destination</th>
+                        <th style="text-align: right; padding: 4px; border-bottom: 1px solid #000;">Arrival</th>
+                        <th style="text-align: right; padding: 4px; border-bottom: 1px solid #000;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+        """
+        footer = f"""
+        </div>
+        """
+
+        if bus_list:
+            for i in range(min(len(bus_list), 5)):
+                content += f"""
+                <tr>
+                    <td style="text-align: left; padding: 1px;">{bus_list[i].line}</td>
+                    <td style="text-align: left; padding: 1px;">{bus_list[i].destination}</td>
+                    <td style="text-align: right; padding: 1px;">{bus_list[i].arrival} min</td>
+                    <td style="text-align: center; padding: 1px;">
+                        <img src="{occupancy_images.get(bus_list[i].occupancy, occupancy_images[0])}" style="height: 20px; width: auto;" />
+                    </td>
+                </tr>
+                """
+            if len(bus_list) > 5:
+                content += f"""
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 4px;">...</td>
+                </tr>
+                """
+
+        popup_html = header + content + footer
+        
+
+        popup = folium.Popup(popup_html, max_width=400)  # Adjust max_width to set the width of the popup
+
+
+
+
         marker = folium.Marker(
             location=[row['stop_lat'], row['stop_lon']],
-            popup=row['stop_name'],
+            popup=popup,
             tooltip=row['stop_name'],
             icon=bus_stop_icon,
             name = row['stop_name']
         )
         stops_cluster.add_child(marker)
 
-    #this if statement is to make sure that there are more than 1 busses in the xml
+
+    # this if statement is to make sure that there are more than 1 busses in the xml
     for vehicle in live_vehicle_data:
         try:
             lon = vehicle["MonitoredVehicleJourney"]["VehicleLocation"]["Longitude"]
@@ -196,3 +266,31 @@ def bus_line(line):
     if line.startswith("INVG"):
         return line[4:]  # Removes the first 4 characters ("INVG")
     return line  # If "INVG" is not present, return the line as is
+
+
+
+
+class RandomBus:
+    def __init__(self):
+        self.line = str(random.randint(1, 99))
+        self.destination = random.choice([
+            "Klinik - Dr. Reiser",
+            "Dötting",
+            "Hugo-Wolf-Straße",
+            "Stadttheater",
+            "Z O B",
+            "Eigenheimstraße",
+            "St. Anton",
+            "Blücherstraße",
+            "Bahnhof Ingolstadt Audi", 
+            "Nordbahnhof / West",
+            "Rechbergstraße",
+            "Technische Hochschule",
+            "Brückenkopf",
+        ])
+        self.occupancy = random.randint(1, 3)
+        self.arrival = random.randint(1, 30)
+
+    def __repr__(self):
+        return (f"Bus(line='{self.line}', destination='{self.destination}', "
+                f"occupancy={self.occupancy}, arrival={self.arrival} mins)")

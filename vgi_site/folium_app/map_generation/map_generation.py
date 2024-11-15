@@ -43,7 +43,9 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
         xml_data = f.read()
     raw_xml = xmltodict.parse(xml_data, force_list=("VehicleActivity"))
     live_vehicle_data = raw_xml["Siri"]["ServiceDelivery"]["VehicleMonitoringDelivery"]["VehicleActivity"]
-    timestamp = raw_xml["Siri"]["ServiceDelivery"]["ResponseTimestamp"]
+    timestamp=raw_xml["Siri"]["ServiceDelivery"]["ResponseTimestamp"]
+    formatted_timestamp = datetime.fromisoformat(timestamp[:-6]).strftime("%Y-%m-%d, %H:%M:%S")
+
 
     #this part just makes sure that the map starts off at the median location of the map
     mean_lat,mean_lon = filtered_df['stop_lat'].median(),filtered_df['stop_lon'].median()
@@ -126,9 +128,6 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
         
 
         popup = folium.Popup(popup_html, max_width=400)  # Adjust max_width to set the width of the popup
-
-
-
 
         marker = folium.Marker(
             location=[row['stop_lat'], row['stop_lon']],
@@ -225,6 +224,19 @@ def create_map(xml_filepath,output_file=os.path.join(settings.BASE_DIR,"folium_a
         except KeyError:
             # Handle the case where the vehicle data does not have valid location info
             continue
+
+
+    overlay_html = f"""
+    <div style="position: absolute; bottom: 10px; right: 10px; z-index: 1000; font-size: 16px; font-weight: bold; 
+                background-color: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 5px; 
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+        Last update: {formatted_timestamp}
+    </div>
+    """
+
+    # Add the overlay to the map
+    m.get_root().html.add_child(folium.Element(overlay_html))
+
 
     
 

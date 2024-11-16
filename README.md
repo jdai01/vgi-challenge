@@ -7,6 +7,13 @@ The interface is designed to allow the upload of XML files by transport provider
 The map will feature dynamic "pop-ups" that show essential information, including upcoming bus stops, real-time occupancy, and other relevant details for each stop. 
 This setup aims to provide a live view of bus movements and passenger load, enhancing the public transit experience for users.
 
+### Description
+| Live Map                                              | Pins                                                                                                                                              |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| For buses: ![Bus Pin](img/bus-pin.png)                | ![Low occupancy](img/bus-low.png) _Line 11 with low occupancy_ <br> ![Medium occupancy](img/bus-medium.png) _Line SPA245 with medium occupancy_   |
+| For bus stops: ![Bus Stop Pin](img/busstop-pin.png)   | ![Bus Stop](img/busstop.png) Bus Stop with lines and occupancy rate                                                                               |
+
+
 ## Requirement
 1. Upload an XML file from the SIRI-VM interface to display bus geodata.
 
